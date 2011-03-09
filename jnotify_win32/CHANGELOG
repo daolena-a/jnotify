@@ -1,0 +1,13 @@
+
+------------------------------------
+Changes in jnotify win32 native code
+------------------------------------
+06/03/2010 : Omry : Changed priority of events reader thread to realtime, this makes it less likely that jnotify misses events.
+27/01/2010 : Matthew : Find our classes from a thread guaranteed to find them
+26/01/2010 : Matthew : Remove references to files that only exist in jnotify_linux
+25/01/2010 : Omry : Added an events thread, improving reliability and reducing the chance for lost events.
+25/01/2010 : Omry : Fixed rare crashes when removing a watch.
+08/05/2006 : Omry : Fixed a problem that prevented JVM from exiting properly.
+07/05/2006 : Omry : win32 code no longer crash JVM some times.
+07/05/2006 : Omry : win32 code api is now synchrnous.
+04/01/2006 : Omry : Unified build for windows and linux from the same ant build (on linux)

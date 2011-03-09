@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>JNotify windows support</title>
+<meta http-equiv="Content-Language" content="English" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<link href="prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<div id="wrap">
+
+<div id="top"></div>
+
+<div id="content">
+
+
+<div class="header">
+<h1><a href="#">Code sample</a></h1>
+</div>
+
+<div class="breadcrumbs">
+<a href="index.html">JNotify</a>&nbsp;&raquo;&nbsp;<a href="#">Code sample</a> &middot; You are here
+</div>
+
+
+<pre class="prettyprint">  public void sample() throws Exception {
+    // path to watch
+    String path = System.getProperty("user.home");
+
+    // watch mask, specify events you care about,
+    // or JNotify.FILE_ANY for all events.
+    int mask = JNotify.FILE_CREATED  | 
+               JNotify.FILE_DELETED  | 
+               JNotify.FILE_MODIFIED | 
+               JNotify.FILE_RENAMED;
+
+    // watch subtree?
+    boolean watchSubtree = true;
+
+    // add actual watch
+    int watchID = JNotify.addWatch(path, mask, watchSubtree, new Listener());
+
+    // sleep a little, the application will exit if you
+    // don't (watching is asynchronous), depending on your
+    // application, this may not be required
+    Thread.sleep(1000000);
+
+    // to remove watch the watch
+    boolean res = JNotify.removeWatch(watchID);
+    if (!res) {
+      // invalid watch ID specified.
+    }
+  }
+  class Listener implements JNotifyListener {
+    public void fileRenamed(int wd, String rootPath, String oldName,
+        String newName) {
+      print("renamed " + rootPath + " : " + oldName + " -> " + newName);
+    }
+    public void fileModified(int wd, String rootPath, String name) {
+      print("modified " + rootPath + " : " + name);
+    }
+    public void fileDeleted(int wd, String rootPath, String name) {
+      print("deleted " + rootPath + " : " + name);
+    }
+    public void fileCreated(int wd, String rootPath, String name) {
+      print("created " + rootPath + " : " + name);
+    }
+    void print(String msg) {
+      System.err.println(msg);
+    }
+  }
+</pre>
+
+
+<div id="clear"></div>
+
+</div>
+<div id="bottom"></div>
+
+</body>
+</html>
+

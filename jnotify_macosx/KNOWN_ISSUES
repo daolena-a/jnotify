@@ -1,0 +1,15 @@
+= FSEvents API limitations =
+The FSEvents API only provides notifications that directory content has changed,
+not what has changed, and these notifications can be delayed about a second.
+Because of this, JNotify on Mac OS X cannot reliably detect changes that are on
+disk for less than a second. For example, `mv a b ; mv b c` may be reported as
+'a' being renamed to 'b' being renamed to 'c', or just 'a' being renamed to 'c'.
+
+Because of the latency, `mv a b ; mv d e ; mv b c` will most likely be reported as 'a' being renamed to 'c' followed by 'd' being renamed to 'e'.
+
+JNotify on Mac OS X also cannot detect when something is moved into or out of
+the watch directory. Files moved in will appear as created, and files moved out
+will appear as deleted.
+
+If you do not depend on the exact reporting of such events, this will not be a
+problem for you.

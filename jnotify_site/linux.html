@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>JNotify - Linux</title>
+<meta http-equiv="Content-Language" content="English" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<link href="prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<div id="wrap">
+
+<div id="top"></div>
+
+<div id="content">
+
+	<div class="header">
+		<h1><a href="#">JNotify - Linux</a></h1>
+	</div>
+
+	<div class="breadcrumbs">
+	<a href="index.html">JNotify</a>&nbsp;&raquo;&nbsp;<a href="#">Linux notes</a> &middot; You are here
+	</div>
+
+	<div class="middle">
+		<h2>JNotify Linux support</h2>
+<p>JNotify Linux API is a thin wrapper around Linux INotify API.</p>
+<p>Since Linux INotify API does not support recursive listening on a directory, JNotify add this functionality by createing an 
+INotify watch on every sub directory under the watched directory (transparently). this process takes a time which is 
+linear to the number of directories in the tree being recursively watched, and require system resources, 
+namely - INotify watches, which are limited, by default to 8192 watches per processes.</p>
+if you get an exception like :
+<p><b>net.contentobjects.jnotify.linux.JNotifyException_linux: Error watching /home/omry/file : No space left on device</b></p>
+it means the native inotify watch limit per process has been reached. the solution is to change the limit with a command like this (only root can do it):
+
+<pre width="50%" class="prettyprint">echo 32000 > /proc/sys/fs/inotify/max_user_watches</pre>
+
+<p>which will set the maximum number of watches per process to 32000</p>
+<p>Users of JNotify need to give up some of the functionality of the underlying system, for example, linux supports IN_CLOSE_NOWRITE event, and windows does not, it means JNotify will not support it. JNotify only support events on basic operations.
+it is, however, possible to use net.contentobjects.jnotify.linux.JNotify_linux class direclty, if you do not care about code portablity. this, however, means you will also no benefit from the clean API of JNotify and not from the recursive listening support.</p>
+
+	</div>
+
+	<div class="right">
+		
+	<h2>Navigation</h2>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="http://sourceforge.net/projects/jnotify/files/">Download</a></li>
+			<li><a href="sample.html">Code sample</a></li>
+			<li>
+				Platforms
+				<ul>
+					<li><a href="windows.html">Windows</a></li>
+					<li><a href="linux.html">Linux</li>
+					<li><a href="macos.html">Mac</li>
+				</ul>
+			</li>
+			<li><a href="http://sourceforge.net/projects/jnotify/">Sourceforge project page</a></li>
+			<li><a href="about.html">About</a></li>
+		</ul>
+	</div>
+	<div id="clear"></div>
+</div>
+
+<div id="bottom"></div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+
+-------------------------------------
+Changes in Jnotify macosx native code
+-------------------------------------
+26/01/2010 : Matthew : Migrated code from GitHub to the main JNotify repository on SourceForge.
+16/11/2009 : Chris : fix typo in classname
+16/11/2009 : Chris : add empty changelog for mac so that the build won't fail by default
+13/11/2009 : Matthew : always build for 10.5
+15/09/2009 : Matthew : proper Mac support. requires Mac OS X 10.5 or later
+02/09/2009 : Matthew : include the Mac OS X library portion

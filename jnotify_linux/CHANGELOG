@@ -1,0 +1,6 @@
+
+------------------------------------
+Changes in jnotify linux native code
+------------------------------------
+23/04/2010 : Omry : Fixed to not print harmless errors when watching a directory recursively and files are created and deteleted quickly
+15/12/2005 : Omry : Fixed bugs with the Linux impl.

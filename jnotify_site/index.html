@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>JNotify</title>
+<meta http-equiv="Content-Language" content="English" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<link href="prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<div id="wrap">
+
+<div id="top"></div>
+
+<div id="content">
+
+	<div class="header">
+		<h1><a href="#">JNotify</a></h1>
+		<h2>File system events library for Java</h2>
+	</div>
+
+	<div class="breadcrumbs">
+		<a href="#">JNotify</a> &middot; You are here
+	</div>
+
+	<div class="middle">
+				
+		<h2>JNotify java API</h2>
+		JNotify is a java library that allow java application to listen to file system events, such as:
+		<ul>
+			<li>File created</li>
+			<li>File modified</li>
+			<li>File renamed</li>
+			<li>File deleted</li>
+		</ul>    	
+
+		<h2>Supported platforms</h2>
+		<ul>
+			<li>Windows (2000 or newer)&nbsp;<a href="windows.html">Windows notes</a></li>
+			<li>Linux with INofity support (2.6.14 or newer)&nbsp;<a href="linux.html">Linux notes</a> </li>
+			<li>Mac OS X (10.5 or newer)&nbsp;<a href="macos.html">Mac OS notes</a></li>
+		</ul>
+
+		<h2>Usage example</h2>
+		<p>JNotify can be tested by simply running the jar file with the followng commend:<br/>
+		<b>java -Djava.library.path=. -jar jnotify-VER.jar [dir]</b></p>
+		<p>JNotify will then monitor the specified dir (or the current directory if dir is not specified) and print detected events.
+		Note that java.library.path should point to the location of the native libraries that comes with jnotify (dlls, so dylibs etc).</p>
+
+		Check out the <a href="sample.html">code sample page</a>.
+	</div>
+
+	<div class="right">
+	
+	<h2>Navigation</h2>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="http://sourceforge.net/projects/jnotify/files/">Download</a></li>
+			<li><a href="sample.html">Code sample</a></li>
+			<li>
+				Platforms
+				<ul>
+					<li><a href="windows.html">Windows</a></li>
+					<li><a href="linux.html">Linux</li>
+					<li><a href="macos.html">Mac</li>
+				</ul>
+			</li>
+			<li><a href="http://sourceforge.net/projects/jnotify/">Sourceforge project page</a></li>
+			<li><a href="about.html">About</a></li>
+		</ul>
+	</div>
+	<div id="clear"></div>
+</div>
+
+<div id="bottom"></div>
+
+</div>
+</body>
+</html>

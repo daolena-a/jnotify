@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>JNotify - Mac OS</title>
+<meta http-equiv="Content-Language" content="English" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<link href="prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify.js"></script>
+</head>
+
+<body onload="prettyPrint()">
+
+<div id="wrap">
+
+<div id="top"></div>
+
+<div id="content">
+
+	<div class="header">
+		<h1><a href="#">JNotify - Mac OS</a></h1>
+	</div>
+
+	<div class="breadcrumbs">
+	<a href="index.html">JNotify</a>&nbsp;&raquo;&nbsp;<a href="#">Mac OS notes</a> &middot; You are here
+	</div>
+
+	<div class="middle">
+		<h2>JNotify Mac OS support</h2>
+		
+Because of the way Mac OS X handles file change notifications, some things may work differently. If you are concerned about Mac support, you should be aware of the following:
+<ul>
+	<li>Events are not guaranteed to be reported in order. Events should be reported within two seconds of occuring. Multiple events occuring within two seconds may be reported in any order.</li>
+	<li>File changes that are present less than two seconds may be missed. For example, mv a b && mv b c may report only a single rename.</li>
+	<li>The code that detects renames is only aware of files being watched. If a file outside the watched directory is moved into the directory, it will be reported as a create. Likewise, if a file is moved out of the watched directory, it will be reported as a delete.</li>
+</ul>
+<br/>
+<div>The Mac OS X API for file system events only reports what directory changes have occured in, and has some latency in it.
+If you register a net.contentobjects.jnotify.macosx.FSEventListener with net.contentobjects.jnotify.macosx.JNotify_macosx, 
+you'll receive a notifyChange event telling you when a directory has changed, within a second of the change occuring. 
+The OS will merge changes together so you'll only get one notification per directory within one second, 
+regardless of how many changes have occured.
+If too many changes occur in different subdirectories, the OS may merge them into a single event for a common parent directory, in which case the recurse flag will be set. See the FSEvents API for more details.
+</div>
+		
+	</div>
+
+	<div class="right">
+		
+	<h2>Navigation</h2>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="http://sourceforge.net/projects/jnotify/files/">Download</a></li>
+			<li><a href="sample.html">Code sample</a></li>
+			<li>
+				Platforms
+				<ul>
+					<li><a href="windows.html">Windows</a></li>
+					<li><a href="linux.html">Linux</li>
+					<li><a href="macos.html">Mac</li>
+				</ul>
+			</li>
+			<li><a href="http://sourceforge.net/projects/jnotify/">Sourceforge project page</a></li>
+			<li><a href="about.html">About</a></li>
+		</ul>
+	</div>
+	<div id="clear"></div>
+</div>
+
+<div id="bottom"></div>
+
+</div>
+</body>
+</html>
