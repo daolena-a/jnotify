@@ -40,7 +40,15 @@ public class JNotify_linux
 	
 	static
 	{
-		System.loadLibrary("jnotify");
+        //fix linux 64 bits versions
+		if (System.getProperty("os.arch").indexOf("64") != -1)
+		{
+		    System.loadLibrary("jnotify_64");
+		}
+		else
+		{
+			System.loadLibrary("jnotify");
+		}
 		int res = nativeInit();
 		if (res != 0)
 		{
